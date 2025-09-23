@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Corner of the Internet</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600&family=Orbitron:wght@600&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Rajdhani', sans-serif; /* lahat ng text dito papalitan */
+    }
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* --- LOADING SCREEN --- */
+    #loader {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #000;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+    #loader h2 {
+      font-family: 'Orbitron', sans-serif; /* loading font hindi papalitan */
+      font-size: 1.5rem;
+      margin-top: 25px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #06b6d4;
+      text-shadow: 0 0 8px #06b6d4, 0 0 15px #ec4899;
+      animation: pulse 1.5s infinite alternate;
+    }
+    .spinner {
+      width: 70px;
+      height: 70px;
+      border: 5px solid rgba(255, 255, 255, 0.05);
+      border-top: 5px solid transparent;
+      border-radius: 50%;
+      background: conic-gradient(#06b6d4, #ec4899, #06b6d4);
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), black 0);
+      mask: radial-gradient(farthest-side, transparent calc(100% - 7px), black 0);
+      animation: spin 1.2s linear infinite;
+    }
+
+    /* --- MAIN PAGE --- */
+    #main {
+      display: none;
+      min-height: 100vh;
+      padding: 20px;
+      background: radial-gradient(circle at top, #111 0%, #0a0a0a 100%);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    #main.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- GLASS CARD STYLE --- */
+    .glass {
+      margin: 25px auto;
+      max-width: 420px;
+      padding: 25px 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    /* --- PROFILE --- */
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid transparent;
+      background: linear-gradient(90deg, #06b6d4, #ec4899);
+      padding: 3px;
+      margin: auto;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    h1 {
+      margin-top: 15px;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, #06b6d4, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    p.username {
+      color: #aaa;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    /* --- TAGS --- */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .tag {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: 0.3s;
+      font-weight: 600;
+    }
+    .tag:hover {
+      border-color: #06b6d4;
+      color: #06b6d4;
+    }
+
+    /* --- LINKS CARD --- */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .link:hover {
+      background: linear-gradient(90deg, #06b6d4, #ec4899);
+    }
+
+    /* --- PROJECTS --- */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .project {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      padding: 12px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.06);
+      transition: 0.3s;
+      text-decoration: none;
+      color: #fff;
+    }
+    .project:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateX(5px);
+    }
+    .project img {
+      width: 65px;
+      height: 65px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 15px;
+      border: 2px solid #06b6d4;
+      flex-shrink: 0;
+    }
+    .project h3 {
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .project p {
+      font-size: 0.9rem;
+      color: #ccc;
+      line-height: 1.4;
+      font-weight: 400;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      margin-top: 25px;
+      font-size: 0.85rem;
+      color: #888;
+      font-weight: 500;
+    }
+    footer span {
+      color: #ec4899;
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes pulse {
+      from { opacity: 0.6; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADING SCREEN -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <h2>Loading Your World...</h2>
+  </div>
+
+  <!-- MAIN PAGE -->
+  <div id="main">
+    
+    <!-- PROFILE CARD -->
+    <div class="glass">
+      <div class="avatar">
+        <img src="prof.jpg" alt="avatar" />
+      </div>
+      <h1>S a I R A  D e v s</h1>
+      <p class="username">@_exotic.sairadevs</p>
+
+      <div class="tags">
+        <span class="tag">HTML</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">TailwindCSS</span>
+        <span class="tag">Css</span>
+        <span class="tag">Python</span>
+        <span class="tag">C#</span>
+      </div>
+
+      <p>Web Developer | I'm just a beginner in programming still learning on how to program ✨</p>
+    </div>
+
+    <!-- LINKS CARD -->
+    <div class="glass">
+      <h2 style="margin-bottom:15px;">🌐 My Social Media </h2>
+      <div class="links">
+        <a class="link" href="" target="_blank">GitHub →</a>
+        <a class="link" href="" target="_blank">YouTube →</a>
+        <a class="link" href="https://www.instagram.com/_exotic.sairadraw?igsh=NjVoMTJuZWNsb3Rp" target="_blank">Instagram →</a>
+        <a class="link" href="https://www.tiktok.com/@_exotic.saira?_t=ZS-8zy3bSP7zV2&_r=1" target="_blank">TikTok →</a>
+      </div>
+    </div>
+<br>
+    <!-- ABOUT ME CARD -->
+    <div class="glass extra">
+      <h2 style="margin-bottom:12px;">✨ About Me</h2>
+      <p>Hello! I'm Saira, a passionate beginner developer exploring the world of programming.  
+      I love experimenting with web technologies, learning new frameworks, and building cool stuff online 🚀.</p>
+    </div>
+    
+    <div class="glass extra">
+      <h2 style="margin-bottom:12px;">📰</h2>
+      <p>I am a grade 12 student, and my strand is ICT PROGRAMMING, and I entered the world of programming because of a woman I love, which is now just a story.</p>
+    </div>
+    
+    <div class="glass extra">
+      <h2 style="margin-bottom:12px;">📍</h2>
+      <p>Mangaldan, Pangasinan, Philippines</p>
+    </div>
+    <br>
+    
+    <!-- PROJECTS CARD -->
+    <div class="glass extra">
+      <h2 style="margin-bottom:15px;">📂 My Projects</h2>
+      <div class="projects"><br>
+        <a class="project" href="https://sairadevs.github.io/inlovabo/" target="_blank"><br>
+          <img src="logo.png" alt="project">
+          <div>
+            <h3>🔗 Confession Website</h3>
+            <p>I made this confession link for panicked men who are afraid to confess.</p>
+          </div>
+        </a>
+        <a class="project" href="https://sairadevs.github.io/sairadevs/" target="_blank"><br>
+          <img src="logo.png" alt="project">
+          <div>
+            <h3>🎥 TikTok Downloader</h3>
+            <p>Tool for downloading TikTok videos without watermark.</p>
+          </div>
+        </a>
+        <a class="project" href="https://sairadevs.github.io/calcu/" target="_blank"><br>
+          <img src="logo.png" alt="project">
+          <div>
+            <h3>⚡ JavaScript Games</h3>
+            <p>If you miss someone you love or have a crush on, send this and tell them to type 1 + 1 =</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      © 2025 SairaDevss - Made with <span>♥</span>
+    </footer>
+  </div>
+
+  <script>
+    const loader = document.getElementById("loader");
+    const main = document.getElementById("main");
+
+    setTimeout(() => {
+      loader.style.opacity = "0";
+      setTimeout(() => {
+        loader.style.display = "none";
+        main.style.display = "block";
+        setTimeout(() => main.classList.add("show"), 50);
+        document.body.style.overflow = "auto";
+      }, 600);
+    }, 2500);
+  </script>
+</body>
+</html>
