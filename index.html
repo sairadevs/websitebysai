@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Rajdhani', sans-serif; /* lahat ng text dito papalitan */
+      font-family: 'Rajdhani', sans-serif; 
     }
     body {
       background: #0d0d0d;
@@ -21,7 +21,7 @@
       height: 100vh;
     }
 
-    /* --- LOADING SCREEN --- */
+   
     #loader {
       display: flex;
       flex-direction: column;
@@ -33,7 +33,7 @@
       animation: fadeIn 1s ease;
     }
     #loader h2 {
-      font-family: 'Orbitron', sans-serif; /* loading font hindi papalitan */
+      font-family: 'Orbitron', sans-serif; 
       font-size: 1.5rem;
       margin-top: 25px;
       font-weight: 600;
@@ -54,7 +54,7 @@
       animation: spin 1.2s linear infinite;
     }
 
-    /* --- MAIN PAGE --- */
+    
     #main {
       display: none;
       min-height: 100vh;
@@ -70,7 +70,7 @@
       transform: translateY(0);
     }
 
-    /* --- GLASS CARD STYLE --- */
+    
     .glass {
       margin: 25px auto;
       max-width: 420px;
@@ -81,7 +81,7 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
 
-    /* --- PROFILE --- */
+    
     .avatar {
       width: 120px;
       height: 120px;
@@ -113,7 +113,7 @@
       font-weight: 500;
     }
 
-    /* --- TAGS --- */
+   
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -135,7 +135,7 @@
       color: #06b6d4;
     }
 
-    /* --- LINKS CARD --- */
+    
     .links {
       display: flex;
       flex-direction: column;
@@ -158,7 +158,7 @@
       background: linear-gradient(90deg, #06b6d4, #ec4899);
     }
 
-    /* --- PROJECTS --- */
+    
     .projects {
       display: flex;
       flex-direction: column;
@@ -202,7 +202,7 @@
       font-weight: 400;
     }
 
-    /* --- FOOTER --- */
+    
     footer {
       margin-top: 25px;
       font-size: 0.85rem;
@@ -213,7 +213,7 @@
       color: #ec4899;
     }
 
-    /* --- ANIMATIONS --- */
+    
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -230,16 +230,16 @@
 </head>
 <body>
 
-  <!-- LOADING SCREEN -->
+  
   <div id="loader">
     <div class="spinner"></div>
-    <h2>Loading Your World...</h2>
+    <h2> Please Wait... </h2>
   </div>
 
-  <!-- MAIN PAGE -->
+  
   <div id="main">
     
-    <!-- PROFILE CARD -->
+    
     <div class="glass">
       <div class="avatar">
         <img src="prof.jpg" alt="avatar" />
@@ -254,12 +254,31 @@
         <span class="tag">Css</span>
         <span class="tag">Python</span>
         <span class="tag">C#</span>
+        <span class="tag">Rust</span>
+        <span class="tag">Lua</span>
+        <span class="tag">??</span>
+        <span class="tag">??</span>
       </div>
 
       <p>Web Developer | I'm just a beginner in programming still learning on how to program ✨</p>
-    </div>
-
-    <!-- LINKS CARD -->
+    
+    
+    <br><br>
+    <h1>Hobbies</h1><br>
+    <span class="tag">Editing</span>
+      <span class="tag">Chess</span>
+      <span class="tag">Badminton</span><br><br>
+      <span class="tag">Mobile legend</span><br><br>
+      <span class="tag">Call Of Duty</span>
+      <span class="tag">Tiktok</span>
+      <span class="tag">Programming</span><br><br>
+      <span class="tag">Free Fire </span>
+      <span class="tag">Facebook</span>
+      
+      
+      </div>
+      
+    
     <div class="glass">
       <h2 style="margin-bottom:15px;">🌐 My Social Media </h2>
       <div class="links">
@@ -270,7 +289,7 @@
       </div>
     </div>
 <br>
-    <!-- ABOUT ME CARD -->
+    
     <div class="glass extra">
       <h2 style="margin-bottom:12px;">✨ About Me</h2>
       <p>Hello! I'm Saira, a passionate beginner developer exploring the world of programming.  
@@ -279,45 +298,87 @@
     
     <div class="glass extra">
       <h2 style="margin-bottom:12px;">📰</h2>
+      <span class="tag">My Story</span><br><br>
       <p>I am a grade 12 student, and my strand is ICT PROGRAMMING, and I entered the world of programming because of a woman I love, which is now just a story.</p>
     </div>
     
     <div class="glass extra">
       <h2 style="margin-bottom:12px;">📍</h2>
+      <span class="tag">Location</span><br><br>
       <p>Mangaldan, Pangasinan, Philippines</p>
     </div>
     <br>
     
-    <!-- PROJECTS CARD -->
+    
     <div class="glass extra">
       <h2 style="margin-bottom:15px;">📂 My Projects</h2>
       <div class="projects"><br>
+      
+       <!-- NO.1 -->
         <a class="project" href="https://sairadevs.github.io/inlovabo/" target="_blank"><br>
           <img src="logo.png" alt="project">
           <div>
             <h3>🔗 Confession Website</h3>
             <p>I made this confession link for panicked men who are afraid to confess.</p>
+            <br>
+            
+            <span class="tag">Click here</span>
+               <span class="tag">100% Safe</span><br><br>
+                  <span class="tag">Confession Site</span><br><br>
+                     <span class="tag">No Virus</span>
+      
           </div>
         </a>
+        
+         <!-- NO.2 -->
         <a class="project" href="https://sairadevs.github.io/sairadevs/" target="_blank"><br>
           <img src="logo.png" alt="project">
           <div>
             <h3>🎥 TikTok Downloader</h3>
             <p>Tool for downloading TikTok videos without watermark.</p>
+      <br>
+      
+        <span class="tag">Click here</span>
+               <span class="tag">100% Safe</span><br><br>
+                  <span class="tag">Tiktok Video Downloader</span><br><br>
+                     <span class="tag">No Virus</span>
           </div>
         </a>
+        
+        
+         <!-- NO.3 -->
         <a class="project" href="https://sairadevs.github.io/calcu/" target="_blank"><br>
           <img src="logo.png" alt="project">
           <div>
-            <h3>⚡ JavaScript Games</h3>
-            <p>If you miss someone you love or have a crush on, send this and tell them to type 1 + 1 =</p>
+            <h3>⚡ Human Calculator</h3>
+            <p>If you miss someone you love or have a crush on, send this and tell them to type 1 + 1 =</p><br>
+            
+            <span class="tag">Click here</span>
+               <span class="tag">100% Safe</span><br><br>
+                  <span class="tag">Human Calculator </span><br><br>
+                     <span class="tag">No Virus</span>
+      
           </div>
         </a>
+        
+        
+        <!-- NO.4 -->
+        <a class="project" href="NotFound.html" target="_blank"><br>
+          <img src="logo.png" alt="project">
+          <div>
+            <h3> Birthday For </h3>
+            <p> Only Available On September ??? 2025</p><br>
+            
+            
+      
+          </div>
+        </a>
+        
       </div>
     </div>
 
     <footer>
-      © 2025 SairaDevss - Made with <span>♥</span>
+      © 2025 SairaDevss Ft You....- Made with <span>♥</span>
     </footer>
   </div>
 
